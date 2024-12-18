@@ -32,4 +32,14 @@
   <!-- SIGNALS -->
   <p>name2: {{ name2() }}</p>
   <input type="text" [value]="name2()" (change)="changeHandler2($event)" />
+  <!-- Directivas de control -->
+  <hr />
+  <h2>Estructuras de control</h2>
+  <h3>ngFor</h3>
+  <ul>
+    <p>tareas: {{ tareas().length }}</p>
+    <li *ngFor="let tarea of tareas(); index as i">
+      {{ i + 1 }} - {{ tarea }}
+    </li>
+  </ul>
 </div>

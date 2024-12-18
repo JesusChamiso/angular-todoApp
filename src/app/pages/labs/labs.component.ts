@@ -47,6 +47,11 @@ export class LabsComponent {
     const input = event.target as HTMLInputElement;
     const newValue = input.value;
     this.name2.set(newValue);
-    
   }
+
+  tareas = signal([
+    'Instalar Angular Cli',
+    'Crear Proyecto',
+    'Crear componentes'
+  ])
 }
