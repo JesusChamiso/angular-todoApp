@@ -28,4 +28,8 @@
   <p>(keydown)</p>
   <input type="text" [value]="person.name" (keydown)="keydownHandler($event)" />
   <input type="text" [value]="person.name" (keydown.shift.t)="clickHandler()" />
+  <hr />
+  <!-- SIGNALS -->
+  <p>name2: {{ name2() }}</p>
+  <input type="text" [value]="name2()" (change)="changeHandler2($event)" />
 </div>
