@@ -24,4 +24,20 @@ export class LabsComponent {
     age: 27,
     avatar: 'https://www.w3schools.com/howto/img_avatar.jpg'
   }
+
+  clickHandler() {
+    alert('Hola, click desde eventos en angular');
+  }
+  clickHandler2() {
+    alert('Hola, click Double desde eventos en angular');
+  }
+
+  changeHandler(event: Event) {
+    console.log(event)
+  }
+
+  keydownHandler(event:KeyboardEvent){
+    const input = event.target as HTMLInputElement;
+    console.log(input.value)
+  }
 }
