@@ -78,4 +78,43 @@
     <p *ngSwitchCase="'Jose Manuel'">Yo soy Jose Manuel</p>
     <p *ngSwitchDefault>Yo soy un desconocido</p>
   </div>
+  <hr />
+  <!-- Directivas personalizadas Formularios-->
+
+  <h3>Directivas personalizadas input Formularios</h3>
+  <input type="color" [formControl]="colorControl" />
+  <p>Color: {{ colorControl.value }}</p>
+  <hr />
+
+  <!-- Estilos personalizados -->
+  <h3>Estilos personalizados</h3>
+  <svg>
+    <g>
+      <rect
+        x="0"
+        y="0"
+        width="100"
+        height="100"
+        [attr.fill]="colorControl.value"
+      />
+    </g>
+  </svg>
+  <br />
+  <input type="number" [formControl]="widthControl" />
+  <span
+    class="box"
+    [style.width.px]="widthControl.value"
+    [style.background-color]="colorControl.value"
+  ></span>
+  <hr />
+  <input type="text" [formControl]="nameControl" />
+  <br />
+  <span
+    class="message-error"
+    [class.show]="nameControl.invalid && nameControl.touched"
+  >
+    Nombre Invalido
+  </span>
+  <br />
+  <input type="text" />
 </div>
