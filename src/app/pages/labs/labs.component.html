@@ -15,19 +15,31 @@
   <input type="text" [value]="name" />
   <button [disabled]="disabled">Click Me</button>
   <hr />
-  <p>person: {{ person.name }}</p>
-  <p>edad: {{ person.age }}</p>
-  <img [src]="person.avatar" alt="avatar" />
+  <p>person: {{ person().name }}</p>
+  <p>edad: {{ person().age }}</p>
+  <img [src]="person().avatar" alt="avatar" />
   <hr />
   <!-- Eventos -->
   <button (click)="clickHandler()">Click Me</button>
   <button (dblclick)="clickHandler2()">Click Double</button>
   <p>(change)</p>
-  <input type="number" [value]="person.age" (change)="changeHandler($event)" />
+  <input
+    type="number"
+    [value]="person().age"
+    (change)="changeHandler($event)"
+  />
 
   <p>(keydown)</p>
-  <input type="text" [value]="person.name" (keydown)="keydownHandler($event)" />
-  <input type="text" [value]="person.name" (keydown.shift.t)="clickHandler()" />
+  <input
+    type="text"
+    [value]="person().name"
+    (keydown)="keydownHandler($event)"
+  />
+  <input
+    type="text"
+    [value]="person().name"
+    (keydown.shift.t)="clickHandler()"
+  />
   <hr />
   <!-- SIGNALS -->
   <p>name2: {{ name2() }}</p>
@@ -42,4 +54,28 @@
       {{ i + 1 }} - {{ tarea }}
     </li>
   </ul>
+  <hr />
+  <!-- NgIf -->
+  <h3>NgIf</h3>
+  <div *ngIf="1 !== 1">My content</div>
+  <div *ngIf="name2() === 'Jose Manuel'">Correcto</div>
+  <input
+    type="text"
+    [value]="person().name"
+    (keydown.enter)="changeHandler3($event)"
+  />
+  <input type="number" [value]="person().age" (change)="changeAge($event)" />
+  <div *ngIf="person().name === 'Jesus' && person().age > 18; else elseBlock">
+    Correcto ambas condiciones
+  </div>
+  <ng-template #elseBlock> No se cumple las condiciones </ng-template>
+  <!-- NgSwitch -->
+
+  <input type="number" [value]="person().name" (change)="changeName($event)" />
+  <h3>NgSwitch</h3>
+  <div [ngSwitch]="person().name">
+    <p *ngSwitchCase="'Jesus'">Yo soy Jesus</p>
+    <p *ngSwitchCase="'Jose Manuel'">Yo soy Jose Manuel</p>
+    <p *ngSwitchDefault>Yo soy un desconocido</p>
+  </div>
 </div>

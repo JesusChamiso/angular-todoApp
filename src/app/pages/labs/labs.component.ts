@@ -19,11 +19,11 @@ export class LabsComponent {
   disabled = false;
   img = 'https://www.w3schools.com/howto/img_avatar.jpg';
 
-  person = {
+  person = signal({
     name: 'Jesus',
     age: 27,
     avatar: 'https://www.w3schools.com/howto/img_avatar.jpg'
-  }
+  });
 
   clickHandler() {
     alert('Hola, click desde eventos en angular');
@@ -47,6 +47,32 @@ export class LabsComponent {
     const input = event.target as HTMLInputElement;
     const newValue = input.value;
     this.name2.set(newValue);
+  }
+  changeHandler3(event: Event) {
+    const input = event.target as HTMLInputElement;
+    const newValue = input.value;
+    this.person.set({
+      ...this.person(),
+      name: newValue
+    });
+  }
+
+  changeAge(event: Event) {
+    const input = event.target as HTMLInputElement;
+    const newValue = input.value;
+    this.person.update(prevState => {
+      return {...prevState,
+      age: parseInt(newValue,10)
+    }});
+  }
+
+  changeName(event: Event) {
+    const input = event.target as HTMLInputElement;
+    const newValue = input.value;
+    this.person.update(prevState => {
+      return {...prevState,
+      name: newValue
+    }});
   }
 
   tareas = signal([
